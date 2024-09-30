@@ -17,4 +17,6 @@ Week 1
 HW1:
 
 [HW1 code](https://github.com/chenhan0301/Database-System/tree/main/HW1)
-[HW1 video](https://github.com/chenhan0301/Database-System/tree/main/HW1)
+
+
+[HW1 video](https://youtu.be/JGgrWMTpqMs)
