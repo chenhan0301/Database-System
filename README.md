@@ -16,4 +16,5 @@ Week 1
 # >作業連結區 :book: 
 HW1:
 
-[Program](https://github.com/chenhan0301/Database-System/tree/main/HW1)
+[HW1 code](https://github.com/chenhan0301/Database-System/tree/main/HW1)
+[HW1 video](https://github.com/chenhan0301/Database-System/tree/main/HW1)
