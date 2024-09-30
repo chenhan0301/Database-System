@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學生資料</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #adadcf;
+        }
+        h1 {
+            text-align: center;
+            padding: 20px;
+            color: #232323;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: rgb(117, 109, 109);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+        }
+        .form-section {
+            margin-bottom: 50px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            border: 1px solid #be7a7a;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: rgb(201, 198, 198);
+            border: none;
+            border: 2px solid #be7a7a;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #69a2df;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 2px solid #ffffff;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #50915c;
+            color: rgb(255, 255, 255);
+        }
+        tr:nth-child(even) {
+            background-color: #a79595;
+        }
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+        .actions button {
+            background-color: #74c185;
+        }
+        .actions button.delete {
+            background-color: #d87e87;
+        }
+    </style>
+</head>
+<body>
+    <h1>學生相關資訊</h1>
+
+    <div class="container">
+        <!-- Form to Add New Data -->
+        <div class="form-section">
+            <h2>新增資料</h2>
+            <form action="/add" method="POST">
+                <label for="name">姓名:</label>
+                <input type="text" name="name" id="name" required>
+
+                <label for="age">年齡:</label>
+                <input type="number" name="age" id="age" required>
+
+                <label for="city">居住地/城市:</label>
+                <input type="text" name="city" id="city" required>
+
+                <button type="submit">新增</button>
+            </form>
+        </div>
+
+        <!-- Display Current Data -->
+        <h2>現有資料</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>學號</th>
+                    <th>姓名</th>
+                    <th>年齡</th>
+                    <th>居住地/城市</th>
+                    <th>修改資料</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td>{{ row.id }}</td>
+                    <td>{{ row.name }}</td>
+                    <td>{{ row.age }}</td>
+                    <td>{{ row.city }}</td>
+                    <td class="actions">
+                        <!-- Form to Update Data -->
+                        <form action="/update/{{ row.id }}" method="POST">
+                            <input type="text" name="name" value="{{ row.name }}" required>
+                            <input type="number" name="age" value="{{ row.age }}" required>
+                            <input type="text" name="city" value="{{ row.city }}" required>
+                            <button type="submit">Update</button>
+                        </form>
+
+                        <!-- Link to Delete Data -->
+                        <form action="/delete/{{ row.id }}" method="GET">
+                            <button class="delete" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
