@@ -6,25 +6,25 @@
 系級：[科技系3年級](https://www.tahrd.ntnu.edu.tw/)
 # >課程筆記區 :blue_book: 
 
-Week 1
+##### Week 1
 - Course Introduction
 
-Week 2
+##### Week 2
 - Install Flask and MySQL build in your computer
 
-Week 3
+##### Week 3
 - Create Table in MySQL by yourself
 
-Week 4 (MySQL Read)
+##### Week 4 (MySQL Read)
 - Separated the app.py into app.py, read.py, create.py
 
 - Utilizing Blueprint in Flask
 
-Week 5 (MySQL Delete)
+##### Week 5 (MySQL Delete)
 - Using ngrok to share code
 - Using mermaid to draw flowcharts
 
-Week 6 (MySQL Update)
+##### Week 6 (MySQL Update)
 - Add search from teacher's example codes
 
 
