@@ -3,7 +3,7 @@
 
 姓名：[董承翰](https://chenhan0301.github.io/Myweb/)
 
-系級：科技系3年級
+系級：[科技系3年級](https://www.tahrd.ntnu.edu.tw/)
 # >課程筆記區 :blue_book: 
 
 Week 1
