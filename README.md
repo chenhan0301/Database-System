@@ -7,10 +7,25 @@
 # >課程筆記區 :blue_book: 
 
 Week 1
-- 課程簡介
+- Course Introduction
 
-- 架設個人Github課程專題
+Week 2
+- Install Flask and MySQL build in your computer
 
+Week 3
+- Create Table in MySQL by yourself
+
+Week 4
+- Separated the app.py into app.py, read.py, create.py
+
+- Utilizing Blueprint in Flask
+
+Week 5
+- Using ngrok to share code
+- Using mermaid to draw flowcharts
+
+Week 6
+- Add search from teacher's example codes
 
 
 # >作業連結區 :book: 
