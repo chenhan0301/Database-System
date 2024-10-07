@@ -15,16 +15,16 @@ Week 2
 Week 3
 - Create Table in MySQL by yourself
 
-Week 4
+Week 4 (MySQL Read)
 - Separated the app.py into app.py, read.py, create.py
 
 - Utilizing Blueprint in Flask
 
-Week 5
+Week 5 (MySQL Delete)
 - Using ngrok to share code
 - Using mermaid to draw flowcharts
 
-Week 6
+Week 6 (MySQL Update)
 - Add search from teacher's example codes
 
 
