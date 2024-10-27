@@ -41,4 +41,4 @@ HW1:
 [HW2 code](https://github.com/chenhan0301/Database-System/tree/main/HW2)
 
 
-[HW2 video](https://youtu.be/JGgrWMTpqMs)
+[HW2 video](https://youtu.be/ANgQiJWVGgI)
