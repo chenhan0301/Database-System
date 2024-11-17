@@ -27,6 +27,12 @@
 ##### Week 6 (MySQL Update)
 - Add search from teacher's example codes
 
+##### Week 7 (MySQL JoinSelected)
+- INNER, LEFT, RIGHT Join.
+
+##### Week 8 
+- Introduce & build NoSQL equipment with MongoDB
+
 
 # >作業連結區 :book: 
 HW1:
