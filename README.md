@@ -36,9 +36,16 @@ HW1:
 
 [HW1 video](https://youtu.be/JGgrWMTpqMs)
 
-HW1:
+HW2:
 
 [HW2 code](https://github.com/chenhan0301/Database-System/tree/main/HW2)
 
 
 [HW2 video](https://youtu.be/ANgQiJWVGgI)
+
+HW3:
+
+[HW3 code](https://github.com/chenhan0301/Database-System/tree/main/HW3)
+
+
+[HW3 video](https://youtu.be/iSECiP8Uv4M)
