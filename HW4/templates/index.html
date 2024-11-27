@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Log</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px 0;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .edit-btn, .delete-btn {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .delete-btn {
+            background-color: #e74c3c;
+        }
+
+        .edit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .delete-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content h2 {
+            margin-top: 0;
+        }
+
+        .modal-content label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        .modal-content input {
+            width: calc(100% - 10px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .modal-content .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-secondary {
+            background-color: #bdc3c7;
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: #95a5a6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Startup Log</h1>
+    <ul>
+        {% for item in data %}
+            <li>
+                <strong>Document ID: {{ item._id }}</strong>
+                <ul>
+                    {% for key, value in item.items() %}
+                        {% if key != '_id' %}
+                            <li>{{ key }}: {{ value }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <button class="edit-btn" data-id="{{ item._id }}" data-name="{{ item.name }}" data-description="{{ item.description }}">Edit</button>
+                <form action="{{ url_for('delete', id=item._id) }}" method="POST" style="display:inline;">
+                    <button type="submit" class="delete-btn">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('create') }}" class="btn-primary">Create New Entry</a>
+
+    <!-- Update Modal -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <h2>Edit Entry</h2>
+            <form id="editForm" method="POST">
+                <label for="editName">Name:</label>
+                <input type="text" id="editName" name="name" required>
+                
+                <label for="editDescription">Description:</label>
+                <input type="text" id="editDescription" name="description" required>
+
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="button" class="btn btn-secondary" id="closeModal">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Open edit modal and populate fields
+            $('.edit-btn').click(function () {
+                const id = $(this).data('id');
+                const name = $(this).data('name');
+                const description = $(this).data('description');
+
+                $('#editName').val(name);
+                $('#editDescription').val(description);
+                $('#editForm').attr('action', `/update/${id}`);
+
+                $('#editModal').fadeIn();
+            });
+
+            // Close modal
+            $('#closeModal').click(function () {
+                $('#editModal').fadeOut();
+            });
+        });
+    </script>
+</body>
+</html>
