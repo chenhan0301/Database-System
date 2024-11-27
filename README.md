@@ -55,3 +55,10 @@ HW3:
 
 
 [HW3 video](https://youtu.be/iSECiP8Uv4M)
+
+HW4:
+
+[HW4 code](https://github.com/chenhan0301/Database-System/tree/main/HW4)
+
+
+[HW4 video](https://youtu.be/mMRsEw8Fi3o)
