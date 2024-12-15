@@ -69,3 +69,5 @@ FINAL PROJECT:
 
 
 [FINAL PROJECT video](https://youtu.be/kVKt1tAQPHY)
+
+[FINAL PROJECT ppt](https://www.canva.com/design/DAGZYN5Pepw/ofjwSEKGQJto1ky7tXr2dA/edit?utm_content=DAGZYN5Pepw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
