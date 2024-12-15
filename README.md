@@ -33,6 +33,9 @@
 ##### Week 8 
 - Introduce & build NoSQL equipment with MongoDB
 
+##### Week 9-16 
+- Final Project
+
 
 # >作業連結區 :book: 
 HW1:
