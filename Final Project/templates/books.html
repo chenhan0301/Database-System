@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Books Management</title>
+</head>
+<body>
+    <h1>Books</h1>
+
+    <!-- 新增書籍表單 -->
+    <form id="addBookForm">
+        <input type="text" id="title" placeholder="Title" required>
+        <input type="text" id="author" placeholder="Author" required>
+        <input type="text" id="category" placeholder="Category" required>
+        <button type="submit">Add Book</button>
+    </form>
+
+    <!-- 搜尋書籍表單 -->
+    <form id="searchForm">
+        <input type="text" id="searchQuery" placeholder="Search books">
+        <button type="submit">Search</button>
+    </form>
+
+    <h2>Books List</h2>
+
+    <!-- 書籍列表 -->
+    <ul id="booksList">
+        {% for book in books %}
+        <li id="book-{{ book['_id'] }}">
+            <strong>{{ book['title'] }}</strong> by {{ book['author'] }} ({{ book['category'] }})
+            <button onclick="deleteBook('{{ book['_id'] }}')">Delete</button>
+            <button onclick="updateBook('{{ book['_id'] }}')">Update</button>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <!-- JavaScript -->
+    <script>
+        // 新增書籍表單事件
+        document.getElementById('addBookForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const title = document.getElementById('title').value;
+            const author = document.getElementById('author').value;
+            const category = document.getElementById('category').value;
+
+            const res = await fetch('/add_book', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title, author, category })
+            });
+
+            if (res.ok) location.reload(); // 新增後重新加載頁面
+        });
+
+        // 搜尋書籍表單事件
+        document.getElementById('searchForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const query = document.getElementById('searchQuery').value;
+
+            const res = await fetch(`/search_books?query=${query}`);
+            if (res.ok) {
+                const data = await res.json();
+                const booksList = document.getElementById('booksList');
+                booksList.innerHTML = ''; // 清空書籍列表
+                data.books.forEach(book => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>${book.title}</strong> by ${book.author} (${book.category})
+                                    <button onclick="deleteBook('${book._id}')">Delete</button>
+                                    <button onclick="updateBook('${book._id}')">Update</button>`;
+                    booksList.appendChild(li);
+                });
+            }
+        });
+
+        // 刪除書籍
+        async function deleteBook(bookId) {
+            const res = await fetch(`/delete_book/${bookId}`, { method: 'DELETE' });
+            if (res.ok) location.reload(); // 刪除後重新加載頁面
+        }
+
+        // 更新書籍
+        async function updateBook(bookId) {
+            const newTitle = prompt("Enter new title:");
+            const newAuthor = prompt("Enter new author:");
+            const newCategory = prompt("Enter new category:");
+
+            const res = await fetch(`/update_book/${bookId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title: newTitle, author: newAuthor, category: newCategory })
+            });
+
+            if (res.ok) location.reload(); // 更新後重新加載頁面
+        }
+    </script>
+</body>
+</html>

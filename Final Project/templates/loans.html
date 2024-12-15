@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Loan Records</title>
+</head>
+<body>
+    <h1>Loan Records</h1>
+    <form id="loanBookForm">
+        <input type="text" name="user_id" placeholder="User ID" required>
+        <input type="text" name="book_id" placeholder="Book ID" required>
+        <button type="submit">Loan Book</button>
+    </form>
+    <ul>
+        {% for loan in loans %}
+        <li>
+            User ID: {{ loan['user_id'] }} | Book ID: {{ loan['book_id'] }} | Borrowed on: {{ loan['loan_date'] }}
+            <button onclick="deleteLoan('{{ loan['_id'] }}')">Delete</button>
+        </li>
+        {% endfor %}
+    </ul>
+    <script>
+        document.getElementById('loanBookForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const user_id = formData.get('user_id');
+            const book_id = formData.get('book_id');
+            const res = await fetch('/loan_book', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user_id, book_id }),
+            });
+            if (res.ok) location.reload();
+        });
+
+        async function deleteLoan(loanId) {
+            const res = await fetch(`/delete_loan/${loanId}`, { method: 'DELETE' });
+            if (res.ok) location.reload();
+        }
+    </script>
+</body>
+</html>
