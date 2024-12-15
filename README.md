@@ -62,3 +62,10 @@ HW4:
 
 
 [HW4 video](https://youtu.be/mMRsEw8Fi3o)
+
+FINAL PROJECT:
+
+[FINAL PROJECT code](https://github.com/chenhan0301/Database-System/tree/main/Final%20Project)
+
+
+[FINAL PROJECT video](https://youtu.be/kVKt1tAQPHY)
